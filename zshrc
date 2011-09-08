@@ -74,6 +74,5 @@ killcaps() {
         xmodmap -e "keysym Caps_Lock = Escape"
     fi
 }
-=======
 
 source ~/zsh/locals.zsh
