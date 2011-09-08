@@ -41,13 +41,9 @@ fi
 # Customize to your needs...
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:/opt/local/bin:/usr/X11R6/bin:/usr/local/mysql/bin
 
-alias ppp="cd ~/workspace/paypal-cloud-ppc"
 alias cssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $@"
 alias yatr="/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin/yaslov $@"
 #alias knife_pp2="knife $argv -c $HOME/.chef/ppctest.rb"
-#alias knife_pp4="knife $argv -c $HOME/.chef/ppc4.rb"
-#alias knife_pp6="knife $argv -c $HOME/.chef/ppc6.rb"
-#knife_pp9 () { knife $* -c $HOME/.chef/ppc9.rb }
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim $@"
 alias -g L='|less'
 alias -g H='|head'
@@ -63,5 +59,5 @@ cleanMediaFlash() {
     popd 
     hdiutil eject $argv 
 }
-#cleanMediaFlash="pushd $@; rm -rf .Spotlight-V100; rm -rf .Trashes; rm -rf ._.Trashes; rm -rf .fseventsd; find . -name \"\._*\" -exec rm -rf "{}" \;; popd; hdiutil eject $@"
 
+source ~/zsh/locals.zsh
