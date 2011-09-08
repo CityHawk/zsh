@@ -40,9 +40,16 @@ fi
 # Customize to your needs...
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:/opt/local/bin:/usr/X11R6/bin:/usr/local/mysql/bin
 
-alias ppp="cd ~/workspace/paypal-cloud-ppc"
 alias ncssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $@"
 alias yatr="/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin/yaslov $@"
+#alias knife_pp2="knife $argv -c $HOME/.chef/ppctest.rb"
+
+# Use MacVim on a Mac
+if [ 'Darwin' = `uname -s` ];
+then
+    alias vim="/Applications/MacVim.app/Contents/MacOS/Vim $@"
+fi
+
 alias -g L='|less'
 alias -g H='|head'
 alias -g T='|tail'
@@ -67,4 +74,6 @@ killcaps() {
         xmodmap -e "keysym Caps_Lock = Escape"
     fi
 }
+=======
 
+source ~/zsh/locals.zsh
