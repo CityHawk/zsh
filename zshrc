@@ -75,4 +75,25 @@ killcaps() {
     fi
 }
 
+if [ "`uname`" = "Darwin" ]; then
+compctl -f -x 'p[2]' -s "`/bin/ls -d1 /Applications/*/*.app /Applications/*.app | sed 's|^.*/\([^/]*\)\.app.*|\\1|;s/ /\\\\ /g'`" -- open
+   alias run='open -a'
+fi
+
+
 source ~/zsh/locals.zsh
+zstyle ':completion:*' hosts off
+
+expand-or-complete-with-dots() {
+  echo -n "\e[31m......\e[0m"
+  zle expand-or-complete
+  zle redisplay
+}
+zle -N expand-or-complete-with-dots
+bindkey "^I" expand-or-complete-with-dots
+
+insert_sudo () { zle beginning-of-line; zle -U "sudo " }
+zle -N insert-sudo insert_sudo
+bindkey "^[s" insert-sudo
+
+
