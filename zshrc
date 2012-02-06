@@ -22,10 +22,12 @@ export ZSH=$HOME/.oh-my-zsh
 #plugins=(git)
 
 ZSH_THEME=cityhawk
-plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search taskwarrior knife extract macports)
+plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search extract)
 
 setopt PROMPT_SUBST
 source $ZSH/oh-my-zsh.sh
+unsetopt auto_cd
+unsetopt cdablevarS
 #
 # Enable color support of ls 
 if [[ "$TERM" != "dumb" ]]; then 
@@ -38,7 +40,7 @@ fi
 
 
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/X11/bin:/opt/local/bin:/usr/X11R6/bin:/usr/local/mysql/bin
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/local/bin
 
 alias ncssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $@"
 alias yatr="/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin/yaslov $@"
