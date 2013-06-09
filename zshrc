@@ -1,5 +1,7 @@
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
+export EDITOR="mvim -f"
 
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -22,7 +24,7 @@ export ZSH=$HOME/.oh-my-zsh
 #plugins=(git)
 
 ZSH_THEME=cityhawk
-plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search extract)
+plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search extract knife)
 
 setopt PROMPT_SUBST
 source $ZSH/oh-my-zsh.sh
@@ -40,7 +42,6 @@ fi
 
 
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/local/bin:/usr/local/git/bin
 
 alias ncssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $@"
 alias yatr="/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin/yaslov $@"
@@ -75,6 +76,11 @@ killcaps() {
         xmodmap -e "remove Lock = Caps_Lock"
         xmodmap -e "keysym Caps_Lock = Escape"
     fi
+}
+
+server_mount() {
+    mkdir -p /Volumes/$1
+    sshfs $1: /Volumes/$1 -oasync
 }
 
 if [ "`uname`" = "Darwin" ]; then
