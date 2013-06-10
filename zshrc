@@ -1,5 +1,7 @@
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
+export EDITOR="mvim -f"
 
 # Set to the name theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -28,7 +30,6 @@ KNIFE_COOKBOOK_PATH=("cookbooks" "site-cookbooks")
 ZSH_THEME=cityhawk
 plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search extract brew pip knife)
 
-
 setopt PROMPT_SUBST
 source $ZSH/oh-my-zsh.sh
 unsetopt auto_cd
@@ -45,7 +46,6 @@ fi
 
 
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/local/bin:/usr/local/git/bin
 
 alias ncssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $@"
 #alias knife_pp2="knife $argv -c $HOME/.chef/ppctest.rb"
@@ -81,6 +81,11 @@ killcaps() {
         xmodmap -e "remove Lock = Caps_Lock"
         xmodmap -e "keysym Caps_Lock = Escape"
     fi
+}
+
+server_mount() {
+    mkdir -p /Volumes/$1
+    sshfs $1: /Volumes/$1 -oasync
 }
 
 if [ "`uname`" = "Darwin" ]; then
