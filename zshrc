@@ -21,8 +21,13 @@ export ZSH=$HOME/.oh-my-zsh
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(git)
 
+# Override stupid knife plugin behavior
+
+KNIFE_COOKBOOK_PATH=("cookbooks" "site-cookbooks")
+
 ZSH_THEME=cityhawk
-plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search extract)
+plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search extract brew pip knife)
+
 
 setopt PROMPT_SUBST
 source $ZSH/oh-my-zsh.sh
@@ -43,7 +48,6 @@ fi
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/local/bin:/usr/local/git/bin
 
 alias ncssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $@"
-alias yatr="/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin/yaslov $@"
 #alias knife_pp2="knife $argv -c $HOME/.chef/ppctest.rb"
 
 # Use MacVim on a Mac
@@ -51,6 +55,8 @@ if [ 'Darwin' = `uname -s` ];
 then
     alias vim="/Applications/MacVim.app/Contents/MacOS/Vim $@"
 fi
+
+export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 
 alias -g L='|less'
 alias -g H='|head'
