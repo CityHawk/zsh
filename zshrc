@@ -28,7 +28,7 @@ export EDITOR="mvim -f"
 KNIFE_COOKBOOK_PATH=("cookbooks" "site-cookbooks")
 
 ZSH_THEME=cityhawk
-plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search extract brew pip knife)
+plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search extract brew pip knife rvm tmux bundler git-extras cp terminalapp)
 
 setopt PROMPT_SUBST
 source $ZSH/oh-my-zsh.sh
