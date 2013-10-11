@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$HOME/gcutil-1.8.3
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR="mvim -f"
@@ -28,7 +28,7 @@ export EDITOR="mvim -f"
 KNIFE_COOKBOOK_PATH=("cookbooks" "site-cookbooks")
 
 ZSH_THEME=cityhawk
-plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search extract brew pip knife rvm tmux bundler git-extras cp terminalapp)
+plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search extract brew pip knife rvm tmuxinator bundler git-extras cp terminalapp)
 
 setopt PROMPT_SUBST
 source $ZSH/oh-my-zsh.sh
