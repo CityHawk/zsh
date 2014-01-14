@@ -28,36 +28,9 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
+BUFFER='ls ~'
 
-# A simple keyword highlighting extension for zsh-syntax-highlighting.
-
-# To use this, please do the following steps.
-# 1) Source this file after zsh-syntax-highlighting.zsh
-# % source zsh-syntax-highlighting.zsh
-# % source contrib/keyword.zsh
-# 2) Add keyword and color pairs to `ZSH_HIGHLIGHT_KEYWORD_KEYWORDS`.
-# % ZSH_HIGHLIGHT_KEYWORD_KEYWORDS+=('rm -rf *' 'fg=white,bold,bg=red')
-# 3) Please see the effect.
-# % ;# rm -rf /tmp/doesnotexist
-
-# List of keyword and color pairs.
-typeset -gA ZSH_HIGHLIGHT_KEYWORD_KEYWORDS
-
-_zsh_highlight-keyword() {
-  setopt localoptions extendedglob
-  for pattern in ${(k)ZSH_HIGHLIGHT_KEYWORD_KEYWORDS}; do
-    _zsh_highlight-keyword-loop "$BUFFER" "$pattern"
-  done
-}
-
-_zsh_highlight-keyword-loop() {
-  # This does *not* do its job syntactically, sorry.
-  local buf="$1" pat="$2"
-  local -a match mbegin mend
-  if [[ "$buf" == (#b)(*)(${~pat})* ]]; then
-    region_highlight+=("$((mbegin[2] - 1)) $mend[2] $ZSH_HIGHLIGHT_KEYWORD_KEYWORDS[$pat]")
-    "$0" "$match[1]" "$pat"; return $?
-  fi
-}
-
-_zsh_highlight_add-highlighter _zsh_highlight-keyword _zsh_highlight_buffer-modified-p
+expected_region_highlight=(
+  "1 2 $ZSH_HIGHLIGHT_STYLES[command]" # ls
+  "4 4 $ZSH_HIGHLIGHT_STYLES[path]"    # ~
+)

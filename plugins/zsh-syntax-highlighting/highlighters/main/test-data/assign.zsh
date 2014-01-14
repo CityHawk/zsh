@@ -28,62 +28,8 @@
 # vim: ft=zsh sw=2 ts=2 et
 # -------------------------------------------------------------------------------------------------
 
+BUFFER='A=1'
 
-ZSH_HIGHLIGHT_STYLES+=(
-  bracket-error                 'fg=red,bold'
+expected_region_highlight=(
+  "1 3 $ZSH_HIGHLIGHT_STYLES[assign]" # A=1
 )
-
-# Colors for bracket levels.
-# Put as many color as you wish.
-# Leave it as an empty array to disable.
-ZSH_HIGHLIGHT_MATCHING_BRACKETS_STYLES=(
-  'fg=blue,bold'
-  'fg=green,bold'
-  'fg=magenta,bold'
-  'fg=yellow,bold'
-  'fg=cyan,bold'
-)
-
-# Whether the bracket match highlighting shound be called or not.
-_zsh_highlight_bracket-match-p() {
-  _zsh_highlight_cursor-moved-p || _zsh_highlight_buffer-modified-p
-}
-
-# Bracket match highlighting.
-_zsh_highlight_bracket-match() {
-  bracket_color_size=${#ZSH_HIGHLIGHT_MATCHING_BRACKETS_STYLES}
-  if ((bracket_color_size > 0)); then
-    typeset -A levelpos lastoflevel matching revmatching
-    ((level = 0))
-    for pos in {1..${#BUFFER}}; do
-      case $BUFFER[pos] in
-        "("|"["|"{")
-          levelpos[$pos]=$((++level))
-          lastoflevel[$level]=$pos
-          ;;
-        ")"|"]"|"}")
-          matching[$lastoflevel[$level]]=$pos
-          revmatching[$pos]=$lastoflevel[$level]
-          levelpos[$pos]=$((level--))
-          ;;
-      esac
-    done
-    for pos in ${(k)levelpos}; do
-      level=$levelpos[$pos]
-      if ((level < 1)); then
-        region_highlight+=("$((pos - 1)) $pos "$ZSH_HIGHLIGHT_STYLES[bracket-error])
-      else
-        region_highlight+=("$((pos - 1)) $pos "$ZSH_HIGHLIGHT_MATCHING_BRACKETS_STYLES[(( (level - 1) % bracket_color_size + 1 ))])
-      fi
-    done
-    ((c = CURSOR + 1))
-    if [[ -n $levelpos[$c] ]]; then
-      ((otherpos = -1))
-      [[ -n $matching[$c] ]] && otherpos=$matching[$c]
-      [[ -n $revmatching[$c] ]] && otherpos=$revmatching[$c]
-      region_highlight+=("$((otherpos - 1)) $otherpos standout")
-    fi
-  fi
-}
-
-_zsh_highlight_add-highlighter _zsh_highlight_bracket-match

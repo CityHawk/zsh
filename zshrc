@@ -1,4 +1,4 @@
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$HOME/gcutil-1.8.3
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$HOME/.rvm/bin
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
 export EDITOR="mvim -f"
@@ -25,24 +25,24 @@ export EDITOR="mvim -f"
 
 # Override stupid knife plugin behavior
 
-KNIFE_COOKBOOK_PATH=("cookbooks" "site-cookbooks")
+KNIFE_COOKBOOK_PATH=("cookbooks" "community-cookbooks")
 
 ZSH_THEME=cityhawk
-plugins=(git osx ruby gem zsh-syntax-highlighting zsh-history-substring-search extract brew pip knife rvm tmuxinator bundler git-extras cp terminalapp)
+plugins=(git osx ruby gem history-substring-search extract brew pip knife rvm tmuxinator git-extras cp terminalapp zsh-syntax-highlighting)
 
 setopt PROMPT_SUBST
 source $ZSH/oh-my-zsh.sh
 unsetopt auto_cd
 unsetopt cdablevarS
 #
-# Enable color support of ls 
-if [[ "$TERM" != "dumb" ]]; then 
-  if [[ -x `which dircolors` ]]; then 
-    eval `dircolors -b` 
-    alias 'ls=ls --color=auto' 
+# Enable color support of ls
+if [[ "$TERM" != "dumb" ]]; then
+  if [[ -x `which dircolors` ]]; then
+    eval `dircolors -b`
+    alias 'ls=ls --color=auto'
     alias grep='grep --colour=auto'
-  fi 
-fi 
+  fi
+fi
 
 
 # Customize to your needs...
@@ -61,27 +61,7 @@ export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 alias -g L='|less'
 alias -g H='|head'
 alias -g T='|tail'
-
-cleanMediaFlash() { 
-    pushd $argv
-    rm -rf .Spotlight-V100
-    rm -rf .Trashes 
-    rm -rf ._.Trashes
-    rm -rf .fseventsd
-    find . -name "\._*" -exec rm -rf "{}" \;  
-    popd 
-    hdiutil eject $argv 
-}
-
-# Kill bloody Caps Lock on Linux system. Remap it to Esc for vim convienience
-
-killcaps() {
-    if [ 'Linux' = `uname -s` ];
-    then
-        xmodmap -e "remove Lock = Caps_Lock"
-        xmodmap -e "keysym Caps_Lock = Escape"
-    fi
-}
+alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/Truecrypt --text'
 
 server_mount() {
     mkdir -p /Volumes/$1
@@ -109,4 +89,6 @@ insert_sudo () { zle beginning-of-line; zle -U "sudo " }
 zle -N insert-sudo insert_sudo
 bindkey "^[s" insert-sudo
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+rvm use 2.0.0-p353
 
