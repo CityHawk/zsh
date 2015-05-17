@@ -27,7 +27,7 @@ export ZSH=$HOME/.oh-my-zsh
 KNIFE_COOKBOOK_PATH=("cookbooks" "community-cookbooks")
 
 ZSH_THEME=cityhawk
-plugins=(git osx ruby gem history-substring-search extract brew pip knife rvm tmuxinator git-extras cp terminalapp zsh-syntax-highlighting vagrant per-directory-history)
+plugins=(git osx ruby gem history-substring-search extract brew pip knife rvm git-extras cp zsh-syntax-highlighting vagrant aws)
 
 setopt PROMPT_SUBST
 source $ZSH/oh-my-zsh.sh
@@ -86,11 +86,11 @@ zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
-ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=blue,bold'
-ZSH_HIGHLIGHT_STYLES[bracket-level-2]='fg=red,bold'
-ZSH_HIGHLIGHT_STYLES[bracket-level-3]='fg=yellow,bold'
-ZSH_HIGHLIGHT_STYLES[bracket-level-4]='fg=magenta,bold'
-ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
+# ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+# ZSH_HIGHLIGHT_STYLES[bracket-level-1]='fg=blue,bold'
+# ZSH_HIGHLIGHT_STYLES[bracket-level-2]='fg=red,bold'
+# ZSH_HIGHLIGHT_STYLES[bracket-level-3]='fg=yellow,bold'
+# ZSH_HIGHLIGHT_STYLES[bracket-level-4]='fg=magenta,bold'
+# ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
 
 source ~/zsh/locals.zsh
