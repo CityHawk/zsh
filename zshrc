@@ -1,33 +1,33 @@
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$HOME/.rvm/bin
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:$HOME/.rvm/bin
 # Path to your oh-my-zsh configuration.
 export ZSH=$HOME/.oh-my-zsh
-
-# Set to the name theme to load.
-# Look in ~/.oh-my-zsh/themes/
-#export ZSH_THEME="robbyrussell"
-
-# Set to this to use case-sensitive completion
-# export CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# export DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# export DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# export DISABLE_AUTO_TITLE="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(git)
-
-# Override stupid knife plugin behavior
 
 KNIFE_COOKBOOK_PATH=("cookbooks" "community-cookbooks")
 
 ZSH_THEME=cityhawk
-plugins=(git osx ruby gem history-substring-search extract brew pip knife rvm git-extras cp zsh-syntax-highlighting vagrant aws)
+plugins=(git
+osx
+ruby
+gem
+history-substring-search
+extract
+brew
+pip
+knife
+rvm
+git-extras
+cp
+zsh-syntax-highlighting
+vagrant
+aws
+common-aliases
+bundler
+vim-interaction
+sudo
+web-search
+z
+httpie
+)
 
 setopt PROMPT_SUBST
 source $ZSH/oh-my-zsh.sh
@@ -49,14 +49,15 @@ fi
 alias ncssh="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $@"
 
 # Use MacVim on a Mac
-if [ 'Darwin' = `uname -s` ];
-then
-    alias vim="/Applications/MacVim.app/Contents/MacOS/Vim $@"
-fi
+# if [ 'Darwin' = `uname -s` ];
+# then
+#     alias vim="/Applications/MacVim.app/Contents/MacOS/Vim $@"
+# fi
 
-export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+# export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
 
 alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/Truecrypt --text'
+
 
 server_mount() {
     mkdir -p /Volumes/$1
@@ -94,3 +95,8 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 # ZSH_HIGHLIGHT_STYLES[cursor]='bg=blue'
 
 source ~/zsh/locals.zsh
+
+function postCallVim
+{
+  osascript -e 'tell application "MacVim" to activate'
+}
