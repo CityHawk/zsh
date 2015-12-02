@@ -27,6 +27,7 @@ sudo
 web-search
 z
 httpie
+ssh-agent
 )
 
 setopt PROMPT_SUBST
@@ -82,7 +83,7 @@ zle -N insert-sudo insert_sudo
 bindkey "^[s" insert-sudo
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-rvm use 2.0.0-p353
+# rvm use 2.0.0-p353
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
@@ -100,3 +101,5 @@ function postCallVim
 {
   osascript -e 'tell application "MacVim" to activate'
 }
+
+eval $(thefuck --alias)
