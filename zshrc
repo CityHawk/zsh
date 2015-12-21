@@ -102,4 +102,7 @@ function postCallVim
   osascript -e 'tell application "MacVim" to activate'
 }
 
-eval $(thefuck --alias)
+if [[ -x /usr/local/bin/thefuck ]]
+then
+    eval $(thefuck --alias)
+fi
