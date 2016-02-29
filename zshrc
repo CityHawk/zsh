@@ -106,3 +106,4 @@ if [[ -x /usr/local/bin/thefuck ]]
 then
     eval $(thefuck --alias)
 fi
+source ~/zsh/theme.zsh
