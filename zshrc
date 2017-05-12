@@ -1,5 +1,6 @@
 source $HOME/zsh/antigen/antigen.zsh
 
+https_proxy="http://proxy.bloomberg.com:80" http_proxy="http://proxy.bloomberg.com:80"
 antigen use oh-my-zsh
 
 antigen bundles <<EOBUNDLES
@@ -37,5 +38,7 @@ antigen-apply
 # that's my theme. I need it
 source  ~/zsh/themes/cityhawk.zsh-theme
 
+# enable cursor shape in neovim
+export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 source ~/zsh/locals.zsh
