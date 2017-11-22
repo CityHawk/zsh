@@ -22,7 +22,6 @@ antigen bundles <<EOBUNDLES
   common-aliases
   bundler
   vim-interaction
-  sudo
   web-search
   z
   httpie
@@ -39,6 +38,6 @@ antigen-apply
 source  ~/zsh/themes/cityhawk.zsh-theme
 
 # enable cursor shape in neovim
-export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+# export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 source ~/zsh/locals.zsh
